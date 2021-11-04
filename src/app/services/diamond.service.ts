@@ -15,6 +15,10 @@ export class DiamondService {
     return this._http.get(this.apiurl+'diamond/getOne/' + id);
    }
 
+   getEtat(){
+
+    return this._http.get(this.apiurl+'diamond/etat/' );
+   }
 
   getAll(){
 

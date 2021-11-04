@@ -100,6 +100,7 @@ import { ListPalierComponent } from './components/list-palier/list-palier.compon
 import { PalierComponent } from './components/palier/palier.component';
 import { ListProvGoldComponent } from './components/list-prov-gold/list-prov-gold.component';
 import { ListProvDiamondComponent } from './components/list-prov-diamond/list-prov-diamond.component';
+import { EtatComponent } from './components/etat/etat.component';
 
 
 registerLocaleData(localeFr);
@@ -139,6 +140,7 @@ registerLocaleData(localeFr);
     PalierComponent,
     ListProvGoldComponent,
     ListProvDiamondComponent,
+    EtatComponent,
 
   
 

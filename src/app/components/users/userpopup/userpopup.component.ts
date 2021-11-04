@@ -41,7 +41,7 @@ export class UserpopupComponent implements OnInit {
       
     })
 
-   if(this.data.ROLE == "Commerciale") {
+   if(this.data && this.data.ROLE == "Commerciale") {
      this.state = true
    }
     this.boutique_service.getAll().subscribe((data : []) => {

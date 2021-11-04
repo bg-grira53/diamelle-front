@@ -26,6 +26,7 @@ import { ListPalierComponent } from './components/list-palier/list-palier.compon
 import { PalierComponent } from './components/palier/palier.component';
 import { ListProvDiamondComponent } from './components/list-prov-diamond/list-prov-diamond.component';
 import { ListProvGoldComponent } from './components/list-prov-gold/list-prov-gold.component';
+import { EtatComponent } from './components/etat/etat.component';
 
 const routes: Routes = [
 
@@ -49,6 +50,7 @@ const routes: Routes = [
     {path : 'list-diamond' , component : ListProvDiamondComponent , data:{role : ['Admin']} , canActivate:[RoleGuardService]  },
     {path : 'list-gold' , component : ListProvGoldComponent , data:{role : ['Admin']} , canActivate:[RoleGuardService]  },
     {path : 'dispatching' , component : DispatchingComponent , data:{role : ['Admin']} , canActivate:[RoleGuardService]  },
+    {path : 'etat' , component : EtatComponent  },
  
 {path:'users' ,  component:UsersComponent , data:{role : ['Admin']} , canActivate:[RoleGuardService] }, 
 {path:'dispatching' ,  component:DispatchingComponent , data:{role : ['Admin']} , canActivate:[RoleGuardService] }, 

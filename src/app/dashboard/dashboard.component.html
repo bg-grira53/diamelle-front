@@ -10,7 +10,9 @@
 
         </div>
 
-
+        <button mat-icon-button>
+            <mat-icon (click)="drawer.toggle()">menu</mat-icon>
+          </button>
         <div class="searchBarMain">
             <input type="text" name="header-search" value="" id="searchBarInput" placeholder="Rechercher Ici" (input)="search($event)" [matAutocomplete]="auto">
             <i class="material-icons searchBarSearchIcon noUserSelect">search</i>
@@ -26,16 +28,24 @@
         </div>
         <span class="spacer"></span>
 
-        <!-- <div class="notif-cont">
-            <button mat-icon-button [matMenuTriggerFor]="notif"><mat-icon class="notification" matBadge="15" matBadgeColor="warn" matBadgePosition="before"  matBadgeSize="small">notifications_active</mat-icon></button>
+        <div class="notif-cont">
+            <button mat-icon-button [matMenuTriggerFor]="notif"><mat-icon class="notification" matBadge="{{notif.length}}" matBadgeColor="warn" matBadgePosition="before"  matBadgeSize="small">notifications_active</mat-icon></button>
 
             <mat-menu #notif="matMenu">
 
+                <mat-card class="example-card" *ngFor="let n of notif">
+                    <mat-card-title-group>
+                        <mat-card-title>Nouvelle Notification</mat-card-title>
+                        <mat-card-subtitle>Date : {{ n.createdAt | date : 'dd-MM-yyyy' }}</mat-card-subtitle>
 
-
+                    </mat-card-title-group>
+                    <mat-card-content>
+                        Vous avez une nouvelle Affectation !!!
+                    </mat-card-content>
+                </mat-card>
             </mat-menu>
 
-        </div> -->
+        </div>
 
 
         <div class="circle-profile">
@@ -75,7 +85,8 @@
 
             <mat-menu #NewMenu="matMenu" yPosition="below" style="position:absolute " overlapTrigger="true">
                 <a mat-menu-item [routerLink]="['/main/users']" *ngIf="username?.role == 'Admin'">Ajouter un utilisateur</a>
-                <a mat-menu-item [routerLink]="['/main/vehicules']" *ngIf="username?.role == 'Admin' ||  username?.role == 'Commerciale'  ">Ajouter une voiture</a>
+                <a mat-menu-item [routerLink]="['/main/boutique']" *ngIf="username?.role == 'Admin' ||  username?.role == 'Commerciale'  ">Ajouter une Boutique</a>
+                <a mat-menu-item [routerLink]="['/main/palier']" *ngIf="username?.role == 'Admin' ||  username?.role == 'Commerciale'  ">Ajouter un palier</a>
 
             </mat-menu>
         </div>

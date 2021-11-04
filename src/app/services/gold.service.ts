@@ -9,6 +9,9 @@ export class GoldService {
 karat = [18 , 24 , 9 , 14]
 apiurl = environment.apiurl
   constructor(private _http : HttpClient) { }
+
+
+
 getCarat() {
 
   return this.karat
@@ -17,7 +20,10 @@ getCarat() {
 
     return this._http.get(this.apiurl+'gold/getOne/' + id);
    }
+getEtat() {
+  return this._http.get(this.apiurl+'gold/etat');
 
+}
 
   getAll(){
 

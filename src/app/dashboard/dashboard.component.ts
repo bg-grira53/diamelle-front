@@ -13,9 +13,9 @@ export class DashboardComponent implements AfterViewInit , OnInit {
 
   showMenu = false;
   username : any ;
-  opened = true ;
-  closed = false ;
-
+  opened = false ;
+  closed = true ;
+  notif : any 
   data : any ;
   loading : boolean = false ;
 
@@ -33,6 +33,11 @@ export class DashboardComponent implements AfterViewInit , OnInit {
   }
 ngOnInit(){
 
+
+  this.dash.getNotif().subscribe(data => {
+
+    this.notif = data 
+  })
 
 this.auth.getUserName().subscribe(
 
@@ -66,7 +71,9 @@ data => {
        {displayName : "Provisionning" , route : 'main/provisionning'  , activated : true} ,
        {displayName : "Liste d'Or" , route : 'main/list-gold'  , activated : true} ,
        {displayName : "Liste diamant" , route : 'main/list-diamond'  , activated : true} ,
-       {displayName : "Etat" , route : 'main/provisionning' , activated : true} 
+       {displayName : "Dispatching" , route : 'main/dispatching'  , activated : true} ,
+
+       {displayName : "Etat Global" , route : 'main/etat' , activated : true} 
    
    
    
