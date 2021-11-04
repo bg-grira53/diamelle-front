@@ -1,0 +1,66 @@
+<div *ngIf="loading" style="position: fixed; width: 100%; height: 100% ; background-color: rgba(0, 0, 0, .4); top: 0 ; left: 0; z-index: 99;">
+    <app-loader style="
+    position: fixed;
+    z-index: 9999;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    "></app-loader>
+
+</div>
+
+
+
+<div class="two-column">
+
+    <div class="image-container">
+
+        <image-map (onCreate)="getOnCreate($event)" [src]="image" [coordinates]="coordinates" (onClick)="getClick($event)" [canEdit]="canEdit"></image-map>
+
+    </div>
+
+
+    <form>
+
+
+
+        <div class="panels" *ngFor="let c of coordinates ; let i = index">
+
+
+
+            <mat-expansion-panel hideToggle>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        {{c.name}}
+                    </mat-panel-title>
+
+                </mat-expansion-panel-header>
+
+                <div class="form-group">
+                    <label>Title</label>
+                    <input type="text" (change)="updateName($event , i)">
+
+                </div>
+
+                <div class="form-group">
+                    <input #file type="file" (change)="updateImage(file.files , i)">
+
+                </div>
+
+
+
+            </mat-expansion-panel>
+
+
+
+
+        </div>
+
+
+
+
+    </form>
+
+</div>
+
+<button mat-fab color="primary" (click)="submit()"><mat-icon>done</mat-icon></button>

@@ -1,0 +1,272 @@
+<div *ngIf="loading" style="position: fixed; width: 100%; height: 100% ; background-color: rgba(0, 0, 0, .4); top: 0 ; left: 0; z-index: 99;">
+    <app-loader style="
+    position: fixed;
+    z-index: 9999;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    "></app-loader>
+
+</div>
+
+
+<mat-horizontal-stepper [linear]="isLinear" #stepper>
+    <mat-step [stepControl]="firstFormGroup">
+        <form class="example-container" [formGroup]="firstFormGroup">
+            <ng-template matStepLabel>Marque et model</ng-template>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Marque</mat-label>
+
+                <mat-select formControlName="marque" required>
+                    <mat-option #marque *ngFor="let m of marques" (click)="marque_change(m)" [value]="m.brand"> {{m.brand}}</mat-option>
+
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Model</mat-label>
+
+                <mat-select formControlName="model" required>
+                    <mat-option *ngFor="let m of models" [value]="m"> {{m}}</mat-option>
+
+                </mat-select>
+            </mat-form-field>
+
+
+            <div>
+                <button mat-button matStepperNext>Next</button>
+            </div>
+        </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup">
+        <form [formGroup]="secondFormGroup">
+            <ng-template matStepLabel>Spécification</ng-template>
+            <div class="three-column">
+                <mat-form-field appearance="outline">
+                    <mat-label>Enérgie</mat-label>
+
+                    <mat-select formControlName="energie" required>
+                        <mat-option value="essence"> Essence</mat-option>
+                        <mat-option value="diesel"> Diesel</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <input matInput type="date" placeholder="Date Circulation" formControlName="date_circulation" required>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <input matInput type="number" step="0.001" placeholder="Kilometrage" formControlName="kilometrage" required>
+                </mat-form-field>
+
+            </div>
+
+            <div class="three-column">
+                <mat-form-field appearance="outline">
+                    <mat-label>boite vitesse</mat-label>
+
+                    <mat-select formControlName="boite_vitesse" required>
+                        <mat-option value="mannuelle"> Mannuelle</mat-option>
+                        <mat-option value="automatique"> Automatique</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <input matInput placeholder="couleur exterieur" formControlName="couleur_ext" required>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <input matInput type="number" step="1" placeholder="nombre porte" formControlName="nb_porte" required>
+                </mat-form-field>
+
+            </div>
+
+            <div class="three-column">
+                <mat-form-field appearance="outline">
+                    <input matInput type="number" placeholder="puissance din" formControlName="puissance_din" required>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <input matInput type="number" placeholder="puissance fisc" formControlName="puissance_fisc" required>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <input matInput type="number" step="1" placeholder="nombre place" formControlName="nb_place" required>
+                </mat-form-field>
+
+            </div>
+
+            <div class="three-column">
+                <mat-form-field appearance="outline">
+                    <mat-label>Transmission</mat-label>
+
+                    <mat-select formControlName="transmission" required>
+                        <mat-option value="traction"> Traction</mat-option>
+                        <mat-option value="integrale"> Integrale</mat-option>
+                        <mat-option value="propulsion"> Propulsion</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <input matInput placeholder="Gouvernorat" formControlName="gouvernorat" required>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Carrosserie</mat-label>
+
+                    <mat-select formControlName="carrosserie" required>
+                        <mat-option *ngFor="let c of carrosserie" [value]="c"> {{c || uppercase}}</mat-option>
+
+                    </mat-select>
+                </mat-form-field>
+
+            </div>
+
+
+
+
+
+
+
+            <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button matStepperNext>Next</button>
+            </div>
+        </form>
+    </mat-step>
+
+    <mat-step [stepControl]="thirdFormGroup">
+        <form [formGroup]="thirdFormGroup">
+            <ng-template matStepLabel>Autre Option</ng-template>
+
+            <div formArrayName="arr" *ngFor="let a of thirdFormGroup.get('arr').controls; let i = index">
+                <div class="two-column" [formGroupName]="i" style="margin-bottom: 10px;">
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>Attribut</mat-label>
+
+                        <input matInput formControlName="attribute" required>
+
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>Valeur</mat-label>
+
+                        <input matInput formControlName="value" required>
+
+                    </mat-form-field>
+
+                </div>
+            </div>
+            <br>
+            <button mat-fab color="primary" (click)="addItem()"><mat-icon>add</mat-icon></button>
+
+
+        </form>
+    </mat-step>
+
+    <mat-step>
+        <ng-template matStepLabel>Image en avant</ng-template>
+        <div class="container">
+            <input type="file" (change)="fileBrowseHandler($event)" />
+            <svg xmlns="http://www.w3.org/2000/svg" width="63" height="64" viewBox="0 0 63 64">
+            <g fill="#3B454F" fill-rule="nonzero">
+              <path 
+                d="M42.656 15.135a1.953 1.953 0 0 1-1.391-.578L31.5 4.795l-9.765 9.762a1.97 1.97 0 1 1-2.785-2.785L30.106.616a1.97 1.97 0 0 1 2.785 0l11.157 11.156a1.97 1.97 0 0 1-1.392 3.363z" />
+              <path
+                d="M31.5 36.791a1.97 1.97 0 0 1-1.969-1.969V2.01a1.97 1.97 0 0 1 3.938 0v32.812a1.97 1.97 0 0 1-1.969 1.969z" />
+              <path
+                d="M55.781 63.041H7.22A7.225 7.225 0 0 1 0 55.822V41.385a4.599 4.599 0 0 1 4.594-4.594h7.234a4.567 4.567 0 0 1 4.402 3.276l2.814 9.382a.658.658 0 0 0 .628.467h23.656a.658.658 0 0 0 .628-.467l2.814-9.385a4.572 4.572 0 0 1 4.402-3.273h7.234A4.599 4.599 0 0 1 63 41.385v14.437a7.225 7.225 0 0 1-7.219 7.219zM4.594 40.729a.656.656 0 0 0-.657.656v14.437a3.286 3.286 0 0 0 3.282 3.282H55.78a3.286 3.286 0 0 0 3.282-3.282V41.385a.656.656 0 0 0-.657-.656h-7.234a.65.65 0 0 0-.628.467L47.73 50.58a4.628 4.628 0 0 1-4.402 3.274H19.672a4.567 4.567 0 0 1-4.402-3.276l-2.814-9.382a.65.65 0 0 0-.628-.467H4.594z" />
+            </g>
+          </svg>
+
+            <h3>Choisir un fichier</h3>
+            <br>
+
+            <label for="fileDropRef">Browse for file</label>
+        </div>
+
+        <div class="files-list">
+            <div class="single-file" *ngFor="let file of files; let i = index">
+                <div class="file-icon" style="width: 50px">
+                    <img style="width: 50px" [src]="base64[i]" alt="">
+                </div>
+                <div style="margin-left: 20px;" class="info">
+                    <h4 class="name">
+                        {{ file?.name }}
+                    </h4>
+
+
+                </div>
+
+                <div class="delete" (click)="deleteFile(i)">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="18" viewBox="0 0 14 18">
+                <path fill="#B1B1B1" fill-rule="nonzero"
+                  d="M1 16c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2H3c-1.1 0-2 .9-2 2v10zm3.17-7.83a.996.996 0 0 1 1.41 0L7 9.59l1.42-1.42a.996.996 0 1 1 1.41 1.41L8.41 11l1.42 1.42a.996.996 0 1 1-1.41 1.41L7 12.41l-1.42 1.42a.996.996 0 1 1-1.41-1.41L5.59 11 4.17 9.58a.996.996 0 0 1 0-1.41zM10.5 1L9.79.29C9.61.11 9.35 0 9.09 0H4.91c-.26 0-.52.11-.7.29L3.5 1H1c-.55 0-1 .45-1 1s.45 1 1 1h12c.55 0 1-.45 1-1s-.45-1-1-1h-2.5z" />
+              </svg>
+                </div>
+            </div>
+        </div>
+
+
+        <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext>Next</button>
+        </div>
+    </mat-step>
+
+    <mat-step>
+        <ng-template matStepLabel>Gallery des Images</ng-template>
+        <div class="container">
+            <input type="file" multiple (change)="fileBrowseHandler($event , false)" />
+            <svg xmlns="http://www.w3.org/2000/svg" width="63" height="64" viewBox="0 0 63 64">
+          <g fill="#3B454F" fill-rule="nonzero">
+            <path
+              d="M42.656 15.135a1.953 1.953 0 0 1-1.391-.578L31.5 4.795l-9.765 9.762a1.97 1.97 0 1 1-2.785-2.785L30.106.616a1.97 1.97 0 0 1 2.785 0l11.157 11.156a1.97 1.97 0 0 1-1.392 3.363z" />
+            <path
+              d="M31.5 36.791a1.97 1.97 0 0 1-1.969-1.969V2.01a1.97 1.97 0 0 1 3.938 0v32.812a1.97 1.97 0 0 1-1.969 1.969z" />
+            <path
+              d="M55.781 63.041H7.22A7.225 7.225 0 0 1 0 55.822V41.385a4.599 4.599 0 0 1 4.594-4.594h7.234a4.567 4.567 0 0 1 4.402 3.276l2.814 9.382a.658.658 0 0 0 .628.467h23.656a.658.658 0 0 0 .628-.467l2.814-9.385a4.572 4.572 0 0 1 4.402-3.273h7.234A4.599 4.599 0 0 1 63 41.385v14.437a7.225 7.225 0 0 1-7.219 7.219zM4.594 40.729a.656.656 0 0 0-.657.656v14.437a3.286 3.286 0 0 0 3.282 3.282H55.78a3.286 3.286 0 0 0 3.282-3.282V41.385a.656.656 0 0 0-.657-.656h-7.234a.65.65 0 0 0-.628.467L47.73 50.58a4.628 4.628 0 0 1-4.402 3.274H19.672a4.567 4.567 0 0 1-4.402-3.276l-2.814-9.382a.65.65 0 0 0-.628-.467H4.594z" />
+          </g>
+        </svg>
+
+            <h3>Choisir un fichier</h3>
+            <br>
+
+            <label for="fileDropRef">Browse for file</label>
+        </div>
+
+        <div class="files-list">
+            <div class="single-file" *ngFor="let file of files; let i = index">
+                <div class="file-icon" style="width: 50px">
+                    <img style="width: 50px" [src]="base64[i]" alt="">
+                </div>
+                <div class="info">
+                    <h4 class="name">
+                        {{ file?.name }}
+                    </h4>
+
+
+                </div>
+
+                <div class="delete" (click)="deleteFile(i)">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="18" viewBox="0 0 14 18">
+              <path fill="#B1B1B1" fill-rule="nonzero"
+                d="M1 16c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2H3c-1.1 0-2 .9-2 2v10zm3.17-7.83a.996.996 0 0 1 1.41 0L7 9.59l1.42-1.42a.996.996 0 1 1 1.41 1.41L8.41 11l1.42 1.42a.996.996 0 1 1-1.41 1.41L7 12.41l-1.42 1.42a.996.996 0 1 1-1.41-1.41L5.59 11 4.17 9.58a.996.996 0 0 1 0-1.41zM10.5 1L9.79.29C9.61.11 9.35 0 9.09 0H4.91c-.26 0-.52.11-.7.29L3.5 1H1c-.55 0-1 .45-1 1s.45 1 1 1h12c.55 0 1-.45 1-1s-.45-1-1-1h-2.5z" />
+            </svg>
+                </div>
+            </div>
+        </div>
+
+
+        <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext>Next</button>
+        </div>
+    </mat-step>
+    <mat-step>
+        <ng-template matStepLabel>Done</ng-template>
+        You are now done.
+        <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button (click)="submit()">Confirmer</button>
+        </div>
+    </mat-step>
+</mat-horizontal-stepper>

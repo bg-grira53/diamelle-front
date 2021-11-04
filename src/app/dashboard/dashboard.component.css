@@ -1,0 +1,158 @@
+.mat-drawer {
+    width: 256px;
+}
+
+.sidenav-content{
+background: white;
+padding: 0 5px;   
+}
+
+
+
+.searchBarMain {
+    background:rgba(0,0,0,0.04);
+	width: 80%;
+	max-width: 720px;
+
+	height: 46px;
+margin: 5px 5px ;
+    border-radius: 5px;
+	-webkit-transition: all 0.2s ease-in-out;
+	-moz-transition: all 0.2s ease-in-out;
+	-ms-transition: all 0.2s ease-in-out;
+	-o-transition: all 0.2s ease-in-out;
+	transition: all 0.2s ease-in-out;
+	position: relative;
+	left: 0;
+	right: 0;
+    top: 0;
+    
+}
+
+
+
+ .searchBarMain:focus-within {
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+
+}
+
+.searchBarMain i.searchBarSearchIcon {
+	height: 100%;
+	line-height: 42px;
+	float: left;
+	width: 52px;
+	text-align: center;
+	color: rgba(0, 0, 0, 0.54);
+}
+
+.searchBarMain input#searchBarInput {
+	height: 46px;
+	padding: 0;
+	margin: 0;
+	border: 0;
+	box-sizing: border-box;
+	background: transparent;
+	width: calc(100% - 52px);
+	outline: none;
+	padding-right: 32px;
+	font-size: 16px;
+	color: rgba(0, 0, 0, 0.54);
+	font-weight: 400;
+    font: normal 16px Roboto,sans-serif;
+
+}
+
+.searchBarMain i.clearSearchBarField {
+	position: absolute;
+	right: 12px;
+	top: 11px;
+	color: rgba(0, 0, 0, 0.84);
+	display: none;
+	font-size: 20px;
+}
+
+.searchBarMain i.clearSearchBarField:hover {
+	cursor: pointer;
+}
+
+.circle-profile{
+	margin-right: 10px;
+}
+
+.profile{
+
+    font-size: 30px;
+	color: #5f6368;
+}
+
+.logo-container{
+	width: 100% ;
+max-width: 240px;
+
+}
+
+
+
+.new-button {
+	width: 145.2px ;
+	padding: 20px 10px 10px 10px ;
+}
+
+.new-button button {
+	
+    align-items: center;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 24px;
+    color: #3c4043;
+    display: inline-flex;
+    font-family: 'Google Sans',Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    height: 48px;
+    letter-spacing: .15px;
+    line-height: 22px;
+    margin: 0;
+    min-width: 120px;
+    padding: 0 24px 0 0;
+    text-transform: none;
+	width: inherit;
+}
+
+.new-button button::before {
+	content: url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2236%22 height=%2236%22 viewBox=%220 0 36 36%22%3E%3Cpath fill=%22%2334A853%22 d=%22M16 16v14h4V20z%22/%3E%3Cpath fill=%22%234285F4%22 d=%22M30 16H20l-4 4h14z%22/%3E%3Cpath fill=%22%23FBBC05%22 d=%22M6 16v4h10l4-4z%22/%3E%3Cpath fill=%22%23EA4335%22 d=%22M20 16V6h-4v14z%22/%3E%3Cpath fill=%22none%22 d=%22M0 0h36v36H0z%22/%3E%3C/svg%3E');
+	display: block;
+    margin: 0 15px 0 9px;
+    position: relative;
+    height: 36px;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    opacity: 1;
+
+}
+
+.new-button  .label {
+	color: #3c4043;
+
+    font-weight: 550;
+    font-size: 14px;
+ 
+    letter-spacing: .15px;
+    line-height: 22px;
+    margin: 0;
+   
+    padding: 0 24px 0 0;
+    text-transform: none;
+}
+
+.notif-cont{
+	margin-right: 20px;
+}
+
+.notification{
+
+	color: #5f6368;
+
+}

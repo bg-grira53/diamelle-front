@@ -1,0 +1,105 @@
+<mat-toolbar>
+
+
+    <mat-toolbar-row>
+
+        <div class="logo-container">
+
+
+            <img src="assets/img/IMG_0158.png" class="logo">
+
+        </div>
+
+
+        <div class="searchBarMain">
+            <input type="text" name="header-search" value="" id="searchBarInput" placeholder="Rechercher Ici" (input)="search($event)" [matAutocomplete]="auto">
+            <i class="material-icons searchBarSearchIcon noUserSelect">search</i>
+
+            <mat-autocomplete #auto="matAutocomplete">
+                <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+
+                <mat-option *ngFor="let d of data">
+
+                </mat-option>
+            </mat-autocomplete>
+
+        </div>
+        <span class="spacer"></span>
+
+        <!-- <div class="notif-cont">
+            <button mat-icon-button [matMenuTriggerFor]="notif"><mat-icon class="notification" matBadge="15" matBadgeColor="warn" matBadgePosition="before"  matBadgeSize="small">notifications_active</mat-icon></button>
+
+            <mat-menu #notif="matMenu">
+
+
+
+            </mat-menu>
+
+        </div> -->
+
+
+        <div class="circle-profile">
+            <button mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon class="material-icons-outlined profile">account_circle</mat-icon>
+            <mat-menu #menu="matMenu">
+                <p mat-hint style="text-align : center">
+                    <b>Bonjour </b>{{username?.name}}</p>
+                <mat-divider></mat-divider>
+                <button mat-menu-item>
+                    <mat-icon>account_box</mat-icon>
+                    <span>Profile</span>
+                </button>
+            <button mat-menu-item (click)="logout()">
+                    <mat-icon>exit_to_app</mat-icon>
+                    <span>Déconnexion</span>
+                </button>
+            </mat-menu>
+            </button>
+        </div>
+    </mat-toolbar-row>
+</mat-toolbar>
+<mat-drawer-container class="global-container" autosize>
+
+    <mat-drawer style="z-index: 0;" #drawer class="sidenav" mode="side" [opened]="opened">
+
+        <div class="new-button">
+
+            <button mat-raised-button [matMenuTriggerFor]="NewMenu"> 
+        <div class="label">
+
+                Nouveau
+
+        </div>
+        
+        </button>
+
+            <mat-menu #NewMenu="matMenu" yPosition="below" style="position:absolute " overlapTrigger="true">
+                <a mat-menu-item [routerLink]="['/main/users']" *ngIf="username?.role == 'Admin'">Ajouter un utilisateur</a>
+                <a mat-menu-item [routerLink]="['/main/vehicules']" *ngIf="username?.role == 'Admin' ||  username?.role == 'Commerciale'  ">Ajouter une voiture</a>
+
+            </mat-menu>
+        </div>
+
+
+        <mat-nav-list>
+
+            <div class="list-item">
+
+
+
+                <app-menu-list-item *ngFor="let item of navItems" [item]="item"></app-menu-list-item>
+
+
+            </div>
+        </mat-nav-list>
+
+
+
+    </mat-drawer>
+    <div class="sidenav-content">
+
+        <router-outlet></router-outlet>
+
+
+    </div>
+</mat-drawer-container>

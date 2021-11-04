@@ -1,0 +1,219 @@
+@import "~angular-calendar/css/angular-calendar.css";
+@import '~material-design-icons/iconfont/material-icons.css';
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@import '~saturn-datepicker/bundle.css';
+body,
+html {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    font: normal 16px Roboto, sans-serif;
+    color: #202124;
+    overflow: auto;
+}
+
+.example-container>* {
+    width: 100%;
+}
+
+.two-column {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-gap: 10px;
+}
+
+.three-column {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-gap: 20px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.four-column {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+}
+
+.two-column>.mat-form-field {}
+
+.cal-cell {
+    font: normal 16px Roboto, sans-serif;
+    font-size: 14px;
+    color: #5f6368;
+}
+
+.cal-day-badge {
+    background-color: #e8f0fe !important;
+}
+
+.global-container {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: white;
+    height: 100vh;
+}
+
+.global-container .mat-drawer {
+    border: none;
+}
+
+.mat-toolbar {
+    background: white;
+    border-bottom: 1px solid rgba(0, 0, 0, .07);
+    min-height: 28px;
+}
+
+.logo {
+    width: 100px;
+}
+
+.spacer {
+    flex: 1 1 auto;
+}
+
+.global-container .mat-drawer .mat-button {
+    display: block;
+    width: 100%;
+    text-align: left;
+}
+
+.mat-drawer-content::-webkit-scrollbar {
+    height: 16px;
+    overflow: visible;
+    width: 16px;
+}
+
+.mat-drawer-content::-webkit-scrollbar-button {
+    height: 0;
+    width: 0;
+}
+
+.mat-drawer-content::-webkit-scrollbar-track {
+    background-clip: padding-box;
+    border: solid transparent;
+    border-width: 0 0 0 4px;
+}
+
+.mat-drawer-content::-webkit-scrollbar-corner {
+    background: transparent;
+}
+
+.mat-drawer-content::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, .2);
+    background-clip: padding-box;
+    border: solid transparent;
+    border-width: 1px 1px 1px 6px;
+    min-height: 28px;
+    padding: 100px 0 0;
+    -webkit-box-shadow: inset 1px 1px 0 rgba(0, 0, 0, .1), inset 0 -1px 0 rgba(0, 0, 0, .07);
+    box-shadow: inset 1px 1px 0 rgba(0, 0, 0, .1), inset 0 -1px 0 rgba(0, 0, 0, .07);
+}
+
+.mat-drawer-inner-container::-webkit-scrollbar {
+    height: 16px;
+    overflow: visible;
+    width: 16px;
+}
+
+.mat-drawer-inner-container::-webkit-scrollbar-button {
+    height: 0;
+    width: 0;
+}
+
+.mat-drawer-inner-container::-webkit-scrollbar-track {
+    background-clip: padding-box;
+    border: solid transparent;
+    border-width: 0 0 0 4px;
+}
+
+.mat-drawer-inner-container::-webkit-scrollbar-corner {
+    background: transparent;
+}
+
+.mat-drawer-inner-container::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, .2);
+    background-clip: padding-box;
+    border: solid transparent;
+    border-width: 1px 1px 1px 6px;
+    min-height: 28px;
+    padding: 100px 0 0;
+    -webkit-box-shadow: inset 1px 1px 0 rgba(0, 0, 0, .1), inset 0 -1px 0 rgba(0, 0, 0, .07);
+    box-shadow: inset 1px 1px 0 rgba(0, 0, 0, .1), inset 0 -1px 0 rgba(0, 0, 0, .07);
+}
+
+.spin {
+    float: left;
+    width: 10px;
+    height: 10px;
+    margin: 5px 10px 0px 0px;
+}
+
+.mat-drawer-content,
+.mat-drawer {
+    transition: margin-left .5s;
+}
+
+.search-box {
+    float: right;
+    position: relative;
+    margin: 5px 0;
+    height: 48px;
+    transition: opacity 0.4s linear, visibility 0.4s linear 0s;
+}
+
+.search-box>#search {
+    width: 250px;
+    height: 48px;
+    border-radius: 6px 0px 0px 6px;
+    box-shadow: none;
+    box-shadow: 1px 2px 2px #ddd;
+}
+
+input,
+input:focus {
+    border: none;
+    box-shadow: none;
+    background-color: none;
+    outline: 0;
+    font-size: 16px;
+    padding: 0px 12px;
+}
+
+.mat-form-field input {
+    padding: 0;
+}
+
+.also {
+    font-family: 'fontawesome';
+    color: #bbb;
+    display: inline-block;
+    background-color: #fff;
+    height: 48px;
+    width: 48px;
+    line-height: 48px;
+    text-align: center;
+    cursor: pointer;
+    border-left: 1px solid #ddd;
+    box-shadow: 1px 2px 2px #ddd;
+}
+
+.search-link:hover {
+    color: #686868;
+}
+
+.setting {
+    border-radius: 0px 6px 6px 0px;
+    margin-left: 48px;
+    font-size: 18px;
+}
+
+.setting:hover {
+    color: #686868;
+}
