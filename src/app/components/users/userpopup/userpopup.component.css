@@ -1,20 +1,13 @@
-
-  
-  .example-container > * {
+.example-container>* {
     width: 100%;
-  }
+}
 
-  
-
-  .perm-container {
-
+.perm-container {
     display: grid;
     grid-template-columns: auto auto auto;
-    padding: 10px 0 ;
-  }
+    padding: 10px 0;
+}
 
-  .perm-field {
-      margin: 10px 0 ;
-  }
-
-  
+.perm-field {
+    margin: 10px 0;
+}
