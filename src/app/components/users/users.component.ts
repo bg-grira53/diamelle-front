@@ -27,7 +27,7 @@ selection = new SelectionModel<any>(true, []);
   constructor( private _userService : UserserviceService , private dialog : MatDialog) { }
 
 
-  openDialog(user): void {
+  openDialog(user = false): void {
     let row = this.selection.selected ;
       const dialogRef = this.dialog.open(UserpopupComponent , {
         data : user ?  user  : null
