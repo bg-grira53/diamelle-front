@@ -68,6 +68,10 @@ this.userService.getByRole('Artisan').subscribe((data : []) => {
     this.arr.push(this.createItem());
   }
 
+  getControls() {
+    return (this.form.get('arr') as FormArray).controls;
+  }
+
  submit() {
 this.loading = true 
   if(this.form.valid) {
