@@ -49,6 +49,13 @@ data => {
     //  activated : (this.username.role == "Admin") ,
      
     // },
+
+    {
+      displayName :'Stock' ,
+
+   divider : true
+
+    },
     {
       displayName : "Stock" ,
    
@@ -57,6 +64,8 @@ data => {
      children : [ 
        
        {displayName : "Provisionning" , route : 'main/provisionning'  , activated : true} ,
+       {displayName : "Liste d'Or" , route : 'main/list-gold'  , activated : true} ,
+       {displayName : "Liste diamant" , route : 'main/list-diamond'  , activated : true} ,
        {displayName : "Etat" , route : 'main/provisionning' , activated : true} 
    
    
@@ -65,12 +74,26 @@ data => {
    ]
    
        },
+       {
 
+        displayName : "Boutique" ,
+     
+        divider : true
+     
+         },
  
        {
         displayName: 'Boutique',
         iconName: 'home',
        route : 'main/list-boutique',
+       activated : (this.username.role == "Admin") ,
+       
+      },
+
+      {
+        displayName: 'Palier',
+        iconName: 'list',
+       route : 'main/list-palier',
        activated : (this.username.role == "Admin") ,
        
       },

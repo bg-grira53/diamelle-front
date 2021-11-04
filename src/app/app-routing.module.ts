@@ -19,6 +19,13 @@ import { ListeAdsComponent } from './components/liste-ads/liste-ads.component';
 import { ProvisionningComponent } from './components/provisionning/provisionning.component';
 import { BoutiqueComponent } from './components/boutique/boutique.component';
 import { BoutiqueListComponent } from './components/boutique-list/boutique-list.component';
+import { GoldProvisionningComponent } from './components/gold-provisionning/gold-provisionning.component';
+import { DispatchingComponent } from './components/dispatching/dispatching.component';
+import { DiamondProvisionningComponent } from './components/diamond-provisionning/diamond-provisionning.component';
+import { ListPalierComponent } from './components/list-palier/list-palier.component';
+import { PalierComponent } from './components/palier/palier.component';
+import { ListProvDiamondComponent } from './components/list-prov-diamond/list-prov-diamond.component';
+import { ListProvGoldComponent } from './components/list-prov-gold/list-prov-gold.component';
 
 const routes: Routes = [
 
@@ -29,11 +36,30 @@ const routes: Routes = [
     {path:'' , redirectTo:'users' , pathMatch:'full'},
 
     {path : 'provisionning' , component : ProvisionningComponent , data:{role : ['Admin']} , canActivate:[RoleGuardService]  },
+    {path : 'gold-provisionning' , component : GoldProvisionningComponent , data:{role : ['Admin']} , canActivate:[RoleGuardService]  },
+    {path : 'diamond-provisionning' , component : DiamondProvisionningComponent , data:{role : ['Admin']} , canActivate:[RoleGuardService]  },
+    {path : 'diamond-provisionning/:id' , component : DiamondProvisionningComponent , data:{role : ['Admin']} , canActivate:[RoleGuardService]  },
+    {path : 'gold-provisionning/:id' , component : GoldProvisionningComponent , data:{role : ['Admin']} , canActivate:[RoleGuardService]  },
     {path : 'boutique' , component : BoutiqueComponent , data:{role : ['Admin']} , canActivate:[RoleGuardService]  },
     {path : 'boutique/:id' , component : BoutiqueComponent , data:{role : ['Admin']} , canActivate:[RoleGuardService]  },
     {path : 'list-boutique' , component : BoutiqueListComponent , data:{role : ['Admin']} , canActivate:[RoleGuardService]  },
+    {path : 'list-palier' , component : ListPalierComponent , data:{role : ['Admin']} , canActivate:[RoleGuardService]  },
+    {path : 'palier' , component : PalierComponent , data:{role : ['Admin']} , canActivate:[RoleGuardService]  },
+    {path : 'palier/:id' , component : PalierComponent , data:{role : ['Admin']} , canActivate:[RoleGuardService]  },
+    {path : 'list-diamond' , component : ListProvDiamondComponent , data:{role : ['Admin']} , canActivate:[RoleGuardService]  },
+    {path : 'list-gold' , component : ListProvGoldComponent , data:{role : ['Admin']} , canActivate:[RoleGuardService]  },
+    {path : 'dispatching' , component : DispatchingComponent , data:{role : ['Admin']} , canActivate:[RoleGuardService]  },
  
-{path:'users' ,  component:UsersComponent , data:{role : ['Admin']} , canActivate:[RoleGuardService] },    
+{path:'users' ,  component:UsersComponent , data:{role : ['Admin']} , canActivate:[RoleGuardService] }, 
+{path:'dispatching' ,  component:DispatchingComponent , data:{role : ['Admin']} , canActivate:[RoleGuardService] }, 
+
+
+
+
+
+
+
+
 {path:'vehicules' ,  component:VehiculeComponent  },    
 {path:'vehicules/:id' ,  component:VehiculeComponent  },    
 {path:'listeVehicules' ,  component:ListevehiculeComponent  },    

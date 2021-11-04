@@ -35,4 +35,10 @@ export class UserserviceService {
 
    }
 
+
+   getByRole(role) {
+
+    return this._http.get(this.apiurl+'users/type/' + role) ;
+   }
+
 }

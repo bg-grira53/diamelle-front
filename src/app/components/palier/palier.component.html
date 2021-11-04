@@ -10,25 +10,16 @@ transform: translate(-50%, -50%);
 </div>
 
 <form class="example-container" [formGroup]="form" (submit)="submit()">
+
     <mat-form-field appearance="outline">
-        <mat-label>Poids (G)</mat-label>
-        <input formControlName="poids" matInput>
+        <mat-label>Nom</mat-label>
+        <input formControlName="designation" matInput>
         <mat-error>
             Ce champ est
             <strong>Requise!</strong>
         </mat-error>
 
     </mat-form-field>
-
-    <mat-form-field appearance="outline">
-        <mat-label>Carat</mat-label>
-
-        <mat-select formControlName="carat" required>
-            <mat-option #marque *ngFor="let k of karates" [value]="k"> {{k}} K</mat-option>
-
-        </mat-select>
-    </mat-form-field>
-
 
 
 

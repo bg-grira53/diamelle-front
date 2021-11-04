@@ -21,10 +21,10 @@ transform: translate(-50%, -50%);
     </mat-form-field>
 
     <mat-form-field appearance="outline">
-        <mat-label>Carat</mat-label>
+        <mat-label>Palier</mat-label>
 
-        <mat-select formControlName="carat" required>
-            <mat-option #marque *ngFor="let k of karates" [value]="k"> {{k}} K</mat-option>
+        <mat-select formControlName="palier" required>
+            <mat-option #marque *ngFor="let p of palier" [value]="p._id"> {{p.designation}} </mat-option>
 
         </mat-select>
     </mat-form-field>

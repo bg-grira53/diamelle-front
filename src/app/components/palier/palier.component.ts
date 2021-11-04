@@ -2,31 +2,30 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
-import { GoldService } from 'src/app/services/gold.service';
+import { PalierService } from 'src/app/services/palier.service';
 
 @Component({
-  selector: 'app-gold-provisionning',
-  templateUrl: './gold-provisionning.component.html',
-  styleUrls: ['./gold-provisionning.component.css']
+  selector: 'app-palier',
+  templateUrl: './palier.component.html',
+  styleUrls: ['./palier.component.css']
 })
-export class GoldProvisionningComponent implements OnInit {
+export class PalierComponent implements OnInit {
 
   form: FormGroup;
-  karates : Number[] 
+   
   loading 
 
   boutique : any 
-  constructor(private _formBuilder: FormBuilder , private service : GoldService  , private _snackBar : MatSnackBar , private route : ActivatedRoute ,  private router : Router) { }
+  constructor(private _formBuilder: FormBuilder , private service : PalierService  , private _snackBar : MatSnackBar , private route : ActivatedRoute ,  private router : Router) { }
 
   ngOnInit() {
-this.karates =  this.service.getCarat()
 
     let id = this.route.snapshot.params.id
   
     this.form = this._formBuilder.group({
       
-      poids : [ "" , Validators.required],
-      carat : [ "" , Validators.required],
+      designation : [ "" , Validators.required],
+  
     
 
     })
@@ -36,14 +35,14 @@ this.karates =  this.service.getCarat()
   this.loading = true
       this.service.getOne(id).subscribe( (data : any) => {
      if(!data) {
-      this.openSnack("Boutique not Found!!!")
+      this.openSnack("Palier not Found!!!")
   
       this.router.navigate(["/**"])
   
      }
   
-     this.form.get('poids').setValue(data.poids)
-     this.form.get('carat').setValue(data.carat)
+     this.form.get('designation').setValue(data.designation)
+
     
         
      this.boutique = data 
@@ -132,4 +131,6 @@ this.karates =  this.service.getCarat()
   
     });
   }
+
+
 }

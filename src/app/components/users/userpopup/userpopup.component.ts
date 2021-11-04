@@ -4,6 +4,8 @@ import { MAT_DIALOG_DATA, MatSnackBar, MatDialogRef } from '@angular/material';
 import { Component, OnInit, Inject } from '@angular/core';
 import { DISABLED } from '@angular/forms/src/model';
 import { UserserviceService } from '../services/userservice.service';
+import { BoutiqueService } from '../../boutique/boutique.service';
+
 
 @Component({
   selector: 'app-userpopup',
@@ -11,8 +13,10 @@ import { UserserviceService } from '../services/userservice.service';
   styleUrls: ['./userpopup.component.css']
 })
 export class UserpopupComponent implements OnInit {
-
+  state = false 
   userform : FormGroup ;
+
+  boutiques = []
   items = [
     {key: 'dashboard', text: 'Dashboard accés '},      
     {key: 'gener', text: 'Géneration Reglement'},      
@@ -20,7 +24,7 @@ export class UserpopupComponent implements OnInit {
     {key: 'suiv', text: 'Suivi Reglement '}, 
     {key: 'users', text: 'Gestion Utilisateur'},    
   ];
-  constructor(public dialogRef: MatDialogRef<UserpopupComponent>, @Inject(MAT_DIALOG_DATA) public data: any , private formbuilder :FormBuilder , private _snackBar: MatSnackBar , private _service : UserserviceService) { }
+  constructor(public dialogRef: MatDialogRef<UserpopupComponent>, private boutique_service : BoutiqueService , @Inject(MAT_DIALOG_DATA) public data: any , private formbuilder :FormBuilder , private _snackBar: MatSnackBar , private _service : UserserviceService) { }
 
   ngOnInit() {
    
@@ -33,8 +37,25 @@ export class UserpopupComponent implements OnInit {
       pass : [''  ,  !this.data ? Validators.required : null ] ,
       cpass : [''  , !this.data ? Validators.required : null ] ,
       perm : [this.data ? this.data.ROLE : ''  , !this.data ? Validators.required : null ] ,
+      boutique :[this.data ? this.data.boutique : ''  , this.state ? Validators.required : null ] ,
       
     })
+
+   if(this.data.ROLE == "Commerciale") {
+     this.state = true
+   }
+    this.boutique_service.getAll().subscribe((data : []) => {
+
+      this.boutiques = data
+    }
+    
+    
+    )
+
+
+
+
+
 
   }
 
@@ -50,6 +71,9 @@ let user  = {} ;
 
         user['CODE_USER'] = this.userform.value.code ? this.userform.value.code : this.data.CODE_USER  ;
         user['NOM_USER'] = this.userform.value.nom ;
+
+        if( this.userform.value.perm == "Commerciale")
+        user['boutique'] = this.userform.value.boutique ;
 
         if( !this.data ) {
 
@@ -122,7 +146,10 @@ let user  = {} ;
   )
 
   }
+  change_state(state) {
 
+this.state = state
+  }
   openSnack(message){
     this._snackBar.open(message ,"Fermer", {
       duration: 2000,

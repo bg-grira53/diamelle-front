@@ -6,6 +6,7 @@ import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 //flex
@@ -21,6 +22,7 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
 
 import {
+  
   MatAutocompleteModule,
   MatBadgeModule,
   MatBottomSheetModule,
@@ -59,6 +61,7 @@ import {
   MatSidenav,
   MatFormField,
   MatFormFieldModule,
+  MatStepperPrevious,
 } from '@angular/material';
 import { MenuListItemComponent } from './menu-list-item/menu-list-item.component';
 import {NavService} from './services/nav.service';
@@ -77,7 +80,7 @@ import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 import { AuthInterceptor } from './services/authInterceptor';
 import { VehiculeComponent } from './components/vehicule/vehicule.component';
-import { CdkStepperModule } from '@angular/cdk/stepper';
+import { CdkStepper, CdkStepperModule } from '@angular/cdk/stepper';
 import { DndDirective } from './helpers/dnd.directive';
 import { ListevehiculeComponent } from './components/listevehicule/listevehicule.component';
 import { ImageGalleryComponent } from './components/image-gallery/image-gallery.component';
@@ -91,6 +94,12 @@ import { ProvisionningComponent } from './components/provisionning/provisionning
 import { GoldProvisionningComponent } from './components/gold-provisionning/gold-provisionning.component';
 import { BoutiqueComponent } from './components/boutique/boutique.component';
 import { BoutiqueListComponent } from './components/boutique-list/boutique-list.component';
+import { DispatchingComponent } from './components/dispatching/dispatching.component';
+import { DiamondProvisionningComponent } from './components/diamond-provisionning/diamond-provisionning.component';
+import { ListPalierComponent } from './components/list-palier/list-palier.component';
+import { PalierComponent } from './components/palier/palier.component';
+import { ListProvGoldComponent } from './components/list-prov-gold/list-prov-gold.component';
+import { ListProvDiamondComponent } from './components/list-prov-diamond/list-prov-diamond.component';
 
 
 registerLocaleData(localeFr);
@@ -124,12 +133,21 @@ registerLocaleData(localeFr);
     GoldProvisionningComponent,
     BoutiqueComponent,
     BoutiqueListComponent,
+    DispatchingComponent,
+    DiamondProvisionningComponent,
+    ListPalierComponent,
+    PalierComponent,
+    ListProvGoldComponent,
+    ListProvDiamondComponent,
 
   
 
     
   ],
   imports: [
+
+    CdkStepperModule ,
+ 
     BrowserModule,
     AppRoutingModule,
     MatStepperModule,
@@ -186,7 +204,7 @@ CalendarModule.forRoot({
   FlexLayoutModule
   ],
   
-  providers: [NavService ,{
+  providers: [NavService ,    MatStepperPrevious,{
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,
     

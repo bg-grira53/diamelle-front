@@ -52,8 +52,9 @@
                     Choisir type d'accée
                 </mat-option>
 
-                <mat-option value="Admin">Admin</mat-option>
-                <mat-option value="Commerciale">Commerciale</mat-option>
+                <mat-option (click)="change_state(false)" value="Admin">Admin</mat-option>
+                <mat-option (click)="change_state(true)" value="Commerciale">Commerciale</mat-option>
+                <mat-option (click)="change_state(false)" value="Artisan">Artisan</mat-option>
             </mat-select>
             <mat-error>
                 Ce champ est
@@ -63,7 +64,21 @@
 
 
 
+        <mat-form-field *ngIf="state" appearance="outline">
+            <mat-label>Boutique</mat-label>
+            <mat-select placeholder="State" formControlName="boutique">
+                <mat-option>
+                    Choisir Boutique
+                </mat-option>
 
+                <mat-option *ngFor="let b of boutiques" [value]="b._id">{{b.name}}</mat-option>
+
+            </mat-select>
+            <mat-error>
+                Ce champ est
+                <strong>Requise!</strong>
+            </mat-error>
+        </mat-form-field>
 
 
 
