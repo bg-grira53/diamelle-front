@@ -38,6 +38,8 @@ export class ArticleComponent implements OnInit {
   data : any = null 
   
   isChecked = false
+  loading = false
+  carat = []
   filePath
   date = new Date()
   
