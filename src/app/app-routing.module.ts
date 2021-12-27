@@ -1,3 +1,6 @@
+import { FamilleComponent } from './components/famille/famille.component';
+import { SettingsComponent } from './settings/settings.component';
+import { ArticleComponent } from './components/article/article.component';
 
 import { AuthGuardService } from './services/auth-guard.service';
 import { LoginComponent } from './login/login.component';
@@ -31,9 +34,15 @@ import { EtatComponent } from './components/etat/etat.component';
 const routes: Routes = [
 
   {path:'' , redirectTo:'main' , pathMatch:'full'},
+
+  {path : 'settings' , component : SettingsComponent , children : [
+
+    {path : '' , component : FamilleComponent}
+
+  ]} ,
   {path:'main' , component:DashboardComponent ,   children:[
 
-    
+    {path : 'article' , component : ArticleComponent} ,
     {path:'' , redirectTo:'users' , pathMatch:'full'},
 
     {path : 'provisionning' , component : ProvisionningComponent , data:{role : ['Admin']} , canActivate:[RoleGuardService]  },

@@ -15,7 +15,7 @@ export class DashboardComponent implements AfterViewInit , OnInit {
   username : any ;
   opened = false ;
   closed = true ;
-  notif : any 
+  notif : any = [] 
   data : any ;
   loading : boolean = false ;
 
