@@ -1,0 +1,100 @@
+<h1>Etat d'Or</h1>
+
+<div class="material-table card">
+
+    <div class="material-table-header">
+
+
+
+    </div>
+    <div class="material-table-body">
+        <table cellspacing="0">
+            <thead>
+                <tr>
+                    <th>
+                        <div>Carat</div>
+                    </th>
+                    <th>
+                        <div>Poids entrée (Gram)</div>
+                    </th>
+                    <th>
+                        <div>Poids sortie (Gram)</div>
+                    </th>
+
+                    <th>Reste</th>
+                </tr>
+                <tr class="invisible">
+                    <th>
+                        Some column header
+                    </th>
+                    <th>
+                        Another column header
+                    </th>
+                    <th>
+                        Third
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let g of gold">
+                    <td> {{g._id}} </td>
+                    <td>{{g.entre}}</td>
+                    <td>{{g.sortie}}</td>
+                    <td>{{g.entre - g.sortie}}</td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<h1>Etat de Diamant</h1>
+
+<div class="material-table card">
+
+    <div class="material-table-header">
+
+
+
+    </div>
+    <div class="material-table-body">
+        <table cellspacing="0">
+            <thead>
+                <tr>
+                    <th>
+                        <div>Palier</div>
+                    </th>
+                    <th>
+                        <div>Poids entrée (Gram)</div>
+                    </th>
+                    <th>
+                        <div>Poids sortie (Gram)</div>
+                    </th>
+
+                    <th>Reste</th>
+                </tr>
+                <tr class="invisible">
+                    <th>
+                        Some column header
+                    </th>
+                    <th>
+                        Another column header
+                    </th>
+                    <th>
+                        Third
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let g of diamond">
+                    <td> {{g._id}} </td>
+                    <td>{{g.entre}}</td>
+                    <td>{{g.sortie}}</td>
+                    <td>{{g.entre - g.sortie}}</td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>

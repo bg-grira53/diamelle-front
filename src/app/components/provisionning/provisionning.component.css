@@ -1,0 +1,16 @@
+mat-grid-list {
+    padding: 10px;
+}
+
+mat-card {
+    padding: 50px;
+    margin: 20px;
+    cursor: pointer;
+    transition: .5s;
+}
+
+mat-card:hover {
+    padding: 10px;
+    margin: 10px;
+    cursor: pointer;
+}

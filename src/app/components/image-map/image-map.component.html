@@ -1,0 +1,14 @@
+<div #ElementRefName *ngIf="coordinates" id="image-container" (click)="onAreaCreate($event)">
+    <img class="main-img" [src]="src">
+    <div class="coordinates-container">
+        <div class="area" [ngStyle]="getCoordinateStyle(coordinate )" [title]="coordinate.name" *ngFor="let coordinate of coordinates" (click)="onAreaClick(coordinate)" (contextmenu)="onAreaEdit(coordinate)">
+
+            <img class="thumbnail" [@inOutAnimation] *ngIf="coordinate.clicked" [src]="coordinate.image">
+
+        </div>
+
+
+
+
+    </div>
+</div>

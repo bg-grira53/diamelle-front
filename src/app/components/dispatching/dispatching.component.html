@@ -1,0 +1,153 @@
+<div *ngIf="loading" style="position: fixed; width: 100%; height: 100% ; background-color: rgba(0, 0, 0, .4); top: 0 ; left: 0; z-index: 99;">
+    <app-loader style="
+position: fixed;
+z-index: 9999;
+left: 50%;
+top: 50%;
+transform: translate(-50%, -50%);
+"></app-loader>
+
+</div>
+
+<form class="example-container" [formGroup]="form" (submit)="submit()">
+
+    <mat-form-field>
+        <mat-label>Ref</mat-label>
+        <input formControlName="ref" [disabled]="true" matInput>
+
+    </mat-form-field>
+    <mat-grid-list cols="4" rowHeight="150px">
+        <mat-grid-tile>
+            <mat-form-field appearance="outline">
+                <mat-label>Poids Or</mat-label>
+                <input formControlName="poids_gold" type="number" matInput>
+                <mat-error>
+                    Ce champ est
+                    <strong>Requise!</strong>
+                </mat-error>
+
+            </mat-form-field>
+
+        </mat-grid-tile>
+        <mat-grid-tile>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Carat</mat-label>
+                <mat-select formControlName="carat_gold">
+
+                    <mat-option>Choisir Carat</mat-option>
+                    <mat-option *ngFor="let c of carat" [value]="c"> {{c}} K </mat-option>
+
+                </mat-select>
+                <mat-error>
+                    Ce champ est
+                    <strong>Requise!</strong>
+                </mat-error>
+
+            </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <mat-form-field appearance="outline">
+                <mat-label>Poids diamant</mat-label>
+                <input formControlName="poids_diamond" matInput>
+                <mat-error>
+                    Ce champ est
+                    <strong>Requise!</strong>
+                </mat-error>
+
+            </mat-form-field>
+
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <mat-form-field appearance="outline">
+                <mat-label>Palier diamant</mat-label>
+                <mat-select formControlName="palier_diamond">
+
+                    <mat-option>Choisir Artisan</mat-option>
+                    <mat-option *ngFor="let a of palier" [value]="a._id"> {{a.designation}} </mat-option>
+
+                </mat-select>
+                <mat-error>
+                    Ce champ est
+                    <strong>Requise!</strong>
+                </mat-error>
+
+            </mat-form-field>
+        </mat-grid-tile>
+
+    </mat-grid-list>
+
+    <mat-grid-list cols="3" rowHeight="150px" formArrayName="arr" *ngFor="let a of  getControls(); let i = index">
+        <div [formGroupName]="i" style="margin-bottom: 10px;">
+            <mat-grid-tile>
+
+                <mat-form-field appearance="outline" style="width: 100%;">
+                    <mat-label>Artisan</mat-label>
+                    <mat-select formControlName="artisan">
+
+                        <mat-option>Choisir Artisan</mat-option>
+                        <mat-option *ngFor="let a of artisan" [value]="a._id"> {{a.NOM_USER}} </mat-option>
+
+                    </mat-select>
+                    <mat-error>
+                        Ce champ est
+                        <strong>Requise!</strong>
+                    </mat-error>
+
+                </mat-form-field>
+
+
+
+            </mat-grid-tile>
+
+
+
+            <mat-grid-tile>
+                <mat-form-field appearance="outline" style="width: 100%;">
+                    <mat-label>Type</mat-label>
+                    <mat-select formControlName="type">
+
+                        <mat-option>Choisir Type</mat-option>
+                        <mat-option value="Atelier Production"> Atelier Production </mat-option>
+                        <mat-option value="Sertissage"> Sertissage </mat-option>
+                        <mat-option value="Polissage"> Polissage </mat-option>
+
+                    </mat-select>
+                    <mat-error>
+                        Ce champ est
+                        <strong>Requise!</strong>
+                    </mat-error>
+
+                </mat-form-field>
+
+
+
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Note</mat-label>
+                    <textarea formControlName="note" matInput></textarea>
+                    <mat-error>
+                        Ce champ est
+                        <strong>Requise!</strong>
+                    </mat-error>
+
+                </mat-form-field>
+
+
+
+                <button *ngIf="i +1 ==  getControls().length && i != 2 && !data " mat-mini-fab color="primary" type="button" (click)="addItem()">
+
+   
+                    <mat-icon>exposure_plus_1</mat-icon>
+               </button>
+            </mat-grid-tile>
+
+        </div>
+    </mat-grid-list>
+
+
+    <button type="submit" mat-raised-button>Valider</button>
+</form>

@@ -1,0 +1,27 @@
+.mat-form-field {
+  
+    width: 100%;
+    margin: 5px;
+
+}
+.mat-fab {
+    position: fixed;
+  bottom:50px;
+    right: 30px;
+    
+  
+  }
+h4{
+
+    color: #5f6368;
+}
+.legend{
+
+    
+    width: 100%;
+}
+
+.animate {
+
+    transition: 1s  ;
+}

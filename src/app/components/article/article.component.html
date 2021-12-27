@@ -1,0 +1,385 @@
+<h1>Géstion des Articles</h1>
+
+<div
+  *ngIf="loading"
+  style="
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    top: 0;
+    left: 0;
+    z-index: 99;
+  "
+>
+  <app-loader
+    style="
+      position: fixed;
+      z-index: 9999;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    "
+  ></app-loader>
+</div>
+
+<form class="example-container" [formGroup]="form" (submit)="submit()">
+  <mat-grid-list cols="4" rowHeight="150px">
+    <mat-grid-tile>
+      <mat-form-field>
+        <mat-label>Date D'entrée</mat-label>
+
+        <input
+          formControlName="date"
+          value="{{ date | date: 'yyyy-MM-dd' }}"
+          [disabled]="true"
+          matInput
+        />
+      </mat-form-field>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <mat-form-field>
+        <mat-label>Ref</mat-label>
+
+        <input formControlName="ref" [disabled]="true" matInput />
+      </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <qr-code [value]="ref" [size]="150"></qr-code>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <div *ngIf="filePath && filePath !== ''">
+        <img [src]="filePath"  />
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+
+  <legend class="legend">
+    <h4 class="text-center">Nomenclature</h4>
+    <mat-grid-list cols="5" rowHeight="80px">
+      <mat-grid-tile>
+        <mat-form-field>
+          <mat-label>Boutique</mat-label>
+          <mat-select formControlName="boutique">
+            <mat-option>Choisir Carat</mat-option>
+            <mat-option *ngFor="let c of carat" [value]="c">
+              {{ c }} K
+            </mat-option>
+          </mat-select>
+          <mat-error>
+            Ce champ est
+            <strong>Requise!</strong>
+          </mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <mat-form-field>
+          <mat-label>Famille</mat-label>
+          <mat-select formControlName="famille">
+            <mat-option>Choisir Carat</mat-option>
+            <mat-option *ngFor="let c of carat" [value]="c">
+              {{ c }} K
+            </mat-option>
+          </mat-select>
+          <mat-error>
+            Ce champ est
+            <strong>Requise!</strong>
+          </mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field>
+          <mat-label>Désignation</mat-label>
+          <input formControlName="designation" matInput />
+          <mat-error>
+            Ce champ est
+            <strong>Requise!</strong>
+          </mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <mat-form-field>
+          <mat-label>Couleur OR</mat-label>
+          <mat-select formControlName="couleurOr">
+            <mat-option>Choisir Couleur</mat-option>
+            <mat-option *ngFor="let c of carat" [value]="c">
+              {{ c }} K
+            </mat-option>
+          </mat-select>
+          <mat-error>
+            Ce champ est
+            <strong>Requise!</strong>
+          </mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <mat-form-field>
+          <mat-label>Titre</mat-label>
+          <mat-select formControlName="titre">
+            <mat-option>Choisir Titre</mat-option>
+            <mat-option *ngFor="let c of carat" [value]="c">
+              {{ c }} K
+            </mat-option>
+          </mat-select>
+          <mat-error>
+            Ce champ est
+            <strong>Requise!</strong>
+          </mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
+    <mat-grid-list cols="7" rowHeight="60px">
+      <mat-grid-tile>
+        <mat-form-field>
+          <mat-label>Prix Gr</mat-label>
+          <input formControlName="prixGrMoe" matInput />
+
+          <mat-error>
+            Ce champ est
+            <strong>Requise!</strong>
+          </mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <mat-form-field>
+          <mat-label>Main D'oeuvre</mat-label>
+          <input
+            formControlName="PrixMoe"
+            type="number"
+            step="0.001"
+            matInput
+          />
+
+          <mat-error>
+            Ce champ est
+            <strong>Requise!</strong>
+          </mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field>
+          <mat-label>Poids</mat-label>
+          <input formControlName="PoidsOr" matInput />
+          <mat-error>
+            Ce champ est
+            <strong>Requise!</strong>
+          </mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <mat-form-field>
+          <mat-label>Type Des Pierres</mat-label>
+          <mat-select formControlName="TypePierre">
+            <mat-option>Choisir Couleur</mat-option>
+            <mat-option *ngFor="let c of carat" [value]="c">
+              {{ c }} K
+            </mat-option>
+          </mat-select>
+          <mat-error>
+            Ce champ est
+            <strong>Requise!</strong>
+          </mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <mat-form-field>
+          <mat-label>Poinçon de Maitre</mat-label>
+          <input formControlName="PonçageMaitre" matInput />
+
+          <mat-error>
+            Ce champ est
+            <strong>Requise!</strong>
+          </mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <mat-form-field>
+          <mat-label>Code F</mat-label>
+          <input formControlName="codeF" matInput />
+
+          <mat-error>
+            Ce champ est
+            <strong>Requise!</strong>
+          </mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <mat-form-field>
+          <mat-label>Nom Fournisseur</mat-label>
+          <mat-select formControlName="NomF">
+            <mat-option>Choisir Couleur</mat-option>
+            <mat-option *ngFor="let c of carat" [value]="c">
+              {{ c }} K
+            </mat-option>
+          </mat-select>
+          <mat-error>
+            Ce champ est
+            <strong>Requise!</strong>
+          </mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </legend>
+
+  <mat-grid-list
+    cols="{{ isChecked ? '2' : '1' }}"
+    style="margin-top: 50px"
+    rowHeight="150px"
+  >
+    <mat-grid-tile [@inOutAnimation] *ngIf="isChecked">
+      <legend class="legend">
+        <h4 class="text-center" style="margin-block-end: -10px">
+          Carats des Pierres Diamants
+        </h4>
+
+        <mat-grid-list cols="2" rowHeight="80px">
+          <mat-grid-tile>
+            <mat-form-field>
+              <mat-label>Carats Central</mat-label>
+              <input formControlName="CaratC" matInput />
+
+              <mat-error>
+                Ce champ est
+                <strong>Requise!</strong>
+              </mat-error>
+            </mat-form-field>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <mat-form-field>
+              <mat-label>Prix du CaratsC</mat-label>
+              <input formControlName="PrixCaraC" matInput />
+
+              <mat-error>
+                Ce champ est
+                <strong>Requise!</strong>
+              </mat-error>
+            </mat-form-field>
+          </mat-grid-tile>
+
+          <mat-grid-tile>
+            <mat-form-field>
+              <mat-label>Carats Entouré</mat-label>
+              <input formControlName="CaratE" matInput />
+
+              <mat-error>
+                Ce champ est
+                <strong>Requise!</strong>
+              </mat-error>
+            </mat-form-field>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <mat-form-field>
+              <mat-label>Prix du CaratsE</mat-label>
+              <input formControlName="PrixCaraE" matInput />
+
+              <mat-error>
+                Ce champ est
+                <strong>Requise!</strong>
+              </mat-error>
+            </mat-form-field>
+          </mat-grid-tile>
+        </mat-grid-list>
+      </legend>
+    </mat-grid-tile>
+
+    <mat-grid-tile class="animate">
+      <legend class="legend">
+        <h4 class="text-center" style="margin-block-end: -10px">
+          Les Couts et tarifs des ventes
+        </h4>
+
+        <mat-grid-list cols="3" rowHeight="80px">
+          <mat-grid-tile>
+            <mat-form-field>
+              <mat-label>Prix Or</mat-label>
+              <input formControlName="PrixOr" matInput />
+
+              <mat-error>
+                Ce champ est
+                <strong>Requise!</strong>
+              </mat-error>
+            </mat-form-field>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <mat-form-field>
+              <mat-label>Valeur Diamant</mat-label>
+              <input formControlName="valeurDm" matInput />
+
+              <mat-error>
+                Ce champ est
+                <strong>Requise!</strong>
+              </mat-error>
+            </mat-form-field>
+          </mat-grid-tile>
+
+          <mat-grid-tile>
+            <mat-form-field>
+              <mat-label>Prix D'achat(coût)</mat-label>
+              <input formControlName="PrixAchat" matInput />
+
+              <mat-error>
+                Ce champ est
+                <strong>Requise!</strong>
+              </mat-error>
+            </mat-form-field>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <mat-form-field>
+              <mat-label>B%</mat-label>
+              <input formControlName="B" matInput />
+
+              <mat-error>
+                Ce champ est
+                <strong>Requise!</strong>
+              </mat-error>
+            </mat-form-field>
+          </mat-grid-tile>
+
+          <mat-grid-tile>
+            <mat-form-field>
+              <mat-label>Prix Achat B%</mat-label>
+              <input formControlName="achatB" matInput />
+
+              <mat-error>
+                Ce champ est
+                <strong>Requise!</strong>
+              </mat-error>
+            </mat-form-field>
+          </mat-grid-tile>
+        </mat-grid-list>
+      </legend>
+    </mat-grid-tile>
+  </mat-grid-list>
+
+  <div class="">
+    <mat-slide-toggle style="float: right" (change)="change($event)"
+      >Avec Diamant ?</mat-slide-toggle
+    >
+  </div>
+  <div style="width: 50px">
+    <button type="submit" mat-raised-button color="primary">Valider</button>
+
+    <input
+      type="file"
+      id="file"
+      style="display: none"
+      accept="image/*"
+      (change)="imagePreview($event)"
+    />
+    <button type="button" mat-fab color="secondary">
+      <label for="file">
+        <mat-icon>add</mat-icon>
+      </label>
+    </button>
+  </div>
+</form>

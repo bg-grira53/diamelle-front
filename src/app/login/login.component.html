@@ -1,0 +1,40 @@
+<div class="loader-lap" *ngIf="loading">
+    <div class="lds-ripple">
+        <div></div>
+        <div></div>
+    </div>
+
+</div>
+<div class="wrapper fadeInDown">
+
+    <div id="formContent">
+        <!-- Tabs Titles -->
+
+        <!-- Icon -->
+        <div class="fadeIn first" style="padding: 20px;">
+            <img src="assets/img/IMG_0158.png" id="icon" alt="User Icon" />
+        </div>
+
+        <!-- Login Form -->
+        <form action="" method="post" [formGroup]="loginForm">
+            <div class="col-md-12">
+                <div class="alert alert-danger alert-dismissible" *ngIf="err">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close" (click)="err=false">&times;</a>
+                    <strong>Connexion échoué!</strong>
+                </div>
+            </div>
+
+            <input type="text" id="login" formControlName="email" class="fadeIn second" name="code" autocomplete="off" placeholder="Code Utilisateur" required>
+            <br>
+            <span *ngIf="isValid('email')">Code Utilisateur ne peux pas être vide</span>
+            <input type="password" formControlName="password" id="password" class="fadeIn third invalid-input" name="pass" autocomplete="off" placeholder="Mot de passe" required>
+            <div class="col-md-12"> <span class="invalid" *ngIf="isValid('password')">Mot de passe ne peux pas être vide</span>
+            </div>
+
+            <input type="submit" (click)="login()" class="fadeIn fourth" value="Log In">
+        </form>
+
+
+
+    </div>
+</div>

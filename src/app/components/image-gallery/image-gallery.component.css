@@ -1,0 +1,35 @@
+.panels {
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.image-container {
+    padding: 10px;
+    border: 2px dotted #333;
+}
+
+form {
+    width: 100% !important;
+    border: 1px dotted #cfd4d6;
+    ;
+}
+
+input[type="text"] {
+    position: relative;
+    width: 100%;
+    border: 1px solid #ebf1f4;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.form-group {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.mat-fab {
+    position: fixed;
+    bottom: 50px;
+    right: 30px;
+}

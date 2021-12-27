@@ -1,0 +1,93 @@
+<h2 mat-dialog-title> {{data ? "modifier user :" + data.CODE_USER : "Ajouter un Utilisateur"}} </h2>
+
+
+<mat-dialog-content>
+    <form class="example-container" [formGroup]="userform">
+
+        <mat-form-field appearance="outline">
+            <mat-label>Code User</mat-label>
+            <input formControlName="code" matInput placeholder="Code User" disabled>
+            <mat-error>
+                Ce champ est
+                <strong>Requise!</strong>
+            </mat-error>
+            <mat-hint *ngIf="data">
+                Code user ne peut être <strong>Changé</strong> !
+            </mat-hint>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Nom User</mat-label>
+            <input formControlName="nom" matInput placeholder="Nom User" disabled>
+            <mat-error>
+                Ce champ est
+                <strong>Requise!</strong>
+            </mat-error>
+
+        </mat-form-field>
+
+
+
+
+        <mat-form-field *ngIf="!data" appearance="outline">
+            <mat-label>Mot de passe</mat-label>
+            <input matInput formControlName="pass" placeholder="Mot de passe" type="password">
+            <mat-error>
+                Ce champ est
+                <strong>Requise!</strong>
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field *ngIf="!data" appearance="outline">
+            <mat-label>Confirmer Mot de passe</mat-label>
+            <input matInput formControlName="cpass" placeholder="Confirmer Mot de passe" type="password">
+            <mat-error>
+                Ce champ est
+                <strong>Requise!</strong>
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Géstion des accées</mat-label>
+            <mat-select placeholder="State" formControlName="perm">
+                <mat-option>
+                    Choisir type d'accée
+                </mat-option>
+
+                <mat-option (click)="change_state(false)" value="Admin">Admin</mat-option>
+                <mat-option (click)="change_state(true)" value="Commerciale">Commerciale</mat-option>
+                <mat-option (click)="change_state(false)" value="Artisan">Artisan</mat-option>
+            </mat-select>
+            <mat-error>
+                Ce champ est
+                <strong>Requise!</strong>
+            </mat-error>
+        </mat-form-field>
+
+
+
+        <mat-form-field *ngIf="state" appearance="outline">
+            <mat-label>Boutique</mat-label>
+            <mat-select placeholder="State" formControlName="boutique">
+                <mat-option>
+                    Choisir Boutique
+                </mat-option>
+
+                <mat-option *ngFor="let b of boutiques" [value]="b._id">{{b.name}}</mat-option>
+
+            </mat-select>
+            <mat-error>
+                Ce champ est
+                <strong>Requise!</strong>
+            </mat-error>
+        </mat-form-field>
+
+
+
+
+
+
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-raised-button color="primary" cdkFocusInitial (click)="submit()">Valider</button>
+</mat-dialog-actions>
