@@ -22,7 +22,7 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
 
 import {
- 
+  
   MatAutocompleteModule,
   MatBadgeModule,
   MatBottomSheetModule,
@@ -101,12 +101,6 @@ import { PalierComponent } from './components/palier/palier.component';
 import { ListProvGoldComponent } from './components/list-prov-gold/list-prov-gold.component';
 import { ListProvDiamondComponent } from './components/list-prov-diamond/list-prov-diamond.component';
 import { EtatComponent } from './components/etat/etat.component';
-import { ArticleComponent } from './components/article/article.component';
-import { QRCodeModule } from 'angular2-qrcode';
-import { HeaderComponent } from './header/header.component';
-import { SettingsComponent } from './settings/settings.component';
-import { FamilleComponent } from './components/famille/famille.component';
-import { AddPopupComponent } from './settings/add-popup/add-popup.component';
 
 
 registerLocaleData(localeFr);
@@ -147,19 +141,13 @@ registerLocaleData(localeFr);
     ListProvGoldComponent,
     ListProvDiamondComponent,
     EtatComponent,
-    ArticleComponent,
-    HeaderComponent,
-    SettingsComponent,
-    FamilleComponent,
-    AddPopupComponent,
 
   
 
     
   ],
   imports: [
-    QRCodeModule,
-    MatSlideToggleModule,
+
     CdkStepperModule ,
  
     BrowserModule,
@@ -235,8 +223,7 @@ CalendarModule.forRoot({
    
     UserpopupComponent , 
 
-    ConfirmDialogComponent,
-    AddPopupComponent
+    ConfirmDialogComponent
 
   ],
   bootstrap: [AppComponent]
