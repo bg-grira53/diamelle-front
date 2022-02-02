@@ -1,0 +1,39 @@
+.item1 { grid-area: main; }
+.item2 { grid-area: right; }
+
+
+.grid-container {
+  display: grid;
+  grid-template-areas:
+ ' main main main  right right right'
+    ;
+  grid-gap: 10px;
+
+  padding: 10px;
+}
+
+table {
+    width: 100%;
+}
+
+
+
+ .mat-fab {
+  position: fixed;
+bottom:50px;
+  right: 30px;
+  
+
+}
+
+.icons{
+    font-size: 16px;
+}
+
+.edit {
+    color: green ;
+}
+
+.delete {
+    color: red
+}

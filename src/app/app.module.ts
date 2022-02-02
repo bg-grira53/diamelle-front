@@ -107,6 +107,13 @@ import { HeaderComponent } from './header/header.component';
 import { SettingsComponent } from './settings/settings.component';
 import { FamilleComponent } from './components/famille/famille.component';
 import { AddPopupComponent } from './settings/add-popup/add-popup.component';
+import { CouleurComponent } from './components/couleur/couleur.component';
+import { CoulourPopupComponent } from './components/couleur/coulour-popup/coulour-popup.component';
+import { TypePierreComponent } from './components/type-pierre/type-pierre.component';
+import { AddComponent } from './components/typePierre/add/add.component';
+import { FournisseurComponent } from './components/fournisseur/fournisseur.component';
+import { AddFrComponent } from './components/fournisseur/add-fr/add-fr.component';
+import { ListeArticleComponent } from './components/liste-article/liste-article.component';
 
 
 registerLocaleData(localeFr);
@@ -152,6 +159,13 @@ registerLocaleData(localeFr);
     SettingsComponent,
     FamilleComponent,
     AddPopupComponent,
+    CouleurComponent,
+    CoulourPopupComponent,
+    TypePierreComponent,
+    AddComponent,
+    FournisseurComponent,
+    AddFrComponent,
+    ListeArticleComponent,
 
   
 
@@ -236,7 +250,11 @@ CalendarModule.forRoot({
     UserpopupComponent , 
 
     ConfirmDialogComponent,
-    AddPopupComponent
+    AddPopupComponent,
+    CoulourPopupComponent, 
+
+    AddComponent ,
+    AddFrComponent
 
   ],
   bootstrap: [AppComponent]

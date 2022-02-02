@@ -63,9 +63,9 @@
         <mat-form-field>
           <mat-label>Boutique</mat-label>
           <mat-select formControlName="boutique">
-            <mat-option>Choisir Carat</mat-option>
-            <mat-option *ngFor="let c of carat" [value]="c">
-              {{ c }} K
+            <mat-option>Choisir Boutique</mat-option>
+            <mat-option *ngFor="let b of boutique" [value]="b.name">
+              {{ b.name }} 
             </mat-option>
           </mat-select>
           <mat-error>
@@ -79,9 +79,9 @@
         <mat-form-field>
           <mat-label>Famille</mat-label>
           <mat-select formControlName="famille">
-            <mat-option>Choisir Carat</mat-option>
-            <mat-option *ngFor="let c of carat" [value]="c">
-              {{ c }} K
+            <mat-option>Choisir Famille</mat-option>
+            <mat-option *ngFor="let f of famille" [value]="f.des">
+              {{ f.des }} 
             </mat-option>
           </mat-select>
           <mat-error>
@@ -106,8 +106,8 @@
           <mat-label>Couleur OR</mat-label>
           <mat-select formControlName="couleurOr">
             <mat-option>Choisir Couleur</mat-option>
-            <mat-option *ngFor="let c of carat" [value]="c">
-              {{ c }} K
+            <mat-option *ngFor="let c of couleur" [value]="c.des">
+              {{ c.des }} K
             </mat-option>
           </mat-select>
           <mat-error>
@@ -122,8 +122,8 @@
           <mat-label>Titre</mat-label>
           <mat-select formControlName="titre">
             <mat-option>Choisir Titre</mat-option>
-            <mat-option *ngFor="let c of carat" [value]="c">
-              {{ c }} K
+            <mat-option *ngFor="let c of titre" [value]="c">
+              {{ c }} k
             </mat-option>
           </mat-select>
           <mat-error>
@@ -178,8 +178,8 @@
           <mat-label>Type Des Pierres</mat-label>
           <mat-select formControlName="TypePierre">
             <mat-option>Choisir Couleur</mat-option>
-            <mat-option *ngFor="let c of carat" [value]="c">
-              {{ c }} K
+            <mat-option *ngFor="let c of type" [value]="c.des">
+              {{ c.des }} 
             </mat-option>
           </mat-select>
           <mat-error>
@@ -204,7 +204,7 @@
       <mat-grid-tile>
         <mat-form-field>
           <mat-label>Code F</mat-label>
-          <input formControlName="codeF" matInput />
+          <input formControlName="codeF" [disabled]="true" matInput />
 
           <mat-error>
             Ce champ est
@@ -217,9 +217,9 @@
         <mat-form-field>
           <mat-label>Nom Fournisseur</mat-label>
           <mat-select formControlName="NomF">
-            <mat-option>Choisir Couleur</mat-option>
-            <mat-option *ngFor="let c of carat" [value]="c">
-              {{ c }} K
+            <mat-option>Choisir Fournisseur</mat-option>
+            <mat-option (click)="click(c)" *ngFor="let c of fournisseur" [value]="c.des">
+              {{ c.des }}
             </mat-option>
           </mat-select>
           <mat-error>

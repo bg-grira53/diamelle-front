@@ -30,6 +30,10 @@ import { PalierComponent } from './components/palier/palier.component';
 import { ListProvDiamondComponent } from './components/list-prov-diamond/list-prov-diamond.component';
 import { ListProvGoldComponent } from './components/list-prov-gold/list-prov-gold.component';
 import { EtatComponent } from './components/etat/etat.component';
+import { CouleurComponent } from './components/couleur/couleur.component';
+import { TypePierreComponent } from './components/type-pierre/type-pierre.component';
+import { FournisseurComponent } from './components/fournisseur/fournisseur.component';
+import { ListeArticleComponent } from './components/liste-article/liste-article.component';
 
 const routes: Routes = [
 
@@ -37,12 +41,16 @@ const routes: Routes = [
 
   {path : 'settings' , component : SettingsComponent , children : [
 
-    {path : '' , component : FamilleComponent}
+    {path : '' , component : FamilleComponent} ,
+    {path : 'colors' , component : CouleurComponent} ,
+    {path : 'pierres' , component : TypePierreComponent} ,
+    {path : 'fournisseurs' , component : FournisseurComponent} ,
 
   ]} ,
   {path:'main' , component:DashboardComponent ,   children:[
 
-    {path : 'article' , component : ArticleComponent} ,
+    {path : 'article' , component : ListeArticleComponent} ,
+    {path : 'add-article' , component : ArticleComponent} ,
     {path:'' , redirectTo:'users' , pathMatch:'full'},
 
     {path : 'provisionning' , component : ProvisionningComponent , data:{role : ['Admin']} , canActivate:[RoleGuardService]  },

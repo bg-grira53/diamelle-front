@@ -81,6 +81,18 @@ data => {
    ]
    
        },
+
+
+     {
+
+   displayName : "Article" ,
+
+   iconName : "inbox" ,
+   route : 'main/article',
+   activated : (this.username.role == "Admin") ,
+
+     },
+
        {
 
         displayName : "Boutique" ,

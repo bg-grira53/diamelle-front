@@ -2,6 +2,8 @@ import { FakbackendService } from './../../services/fakbackend.service';
 import { trigger, transition, style, animate } from '@angular/animations';
 import { FormGroup, FormArray, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { BoutiqueService } from '../boutique/boutique.service';
+import { GoldService } from 'src/app/services/gold.service';
 
 @Component({
   selector: 'app-article',
@@ -42,9 +44,23 @@ export class ArticleComponent implements OnInit {
   carat = []
   filePath
   date = new Date()
+
+  boutique = []
   
-  constructor(private _formBuilder: FormBuilder , private backend : FakbackendService ) { }
+  constructor(private _formBuilder: FormBuilder , private backend : FakbackendService , private goldService : GoldService , private boutiquesrv : BoutiqueService ) { }
 ref = this.backend.getlastRef()
+famille = this.backend.famille
+couleur = this.backend.couleur
+type = this.backend.type
+titre = this.goldService.getCarat() ;
+fournisseur = this.backend.fourniseur
+
+click(c) {
+
+  this.form.get('codeF').setValue(c.code)
+
+
+}
 
   ngOnInit() {
    
@@ -64,10 +80,10 @@ ref = this.backend.getlastRef()
        PonçageMaitre : ["" , Validators.required] ,
        codeF : ["" , Validators.required] ,
        NomF : ["" , Validators.required] ,
-       CaratC : ["" , Validators.required] ,
-       PrixCaraC : ["" , Validators.required] ,
-       CaratE : ["" , Validators.required] ,
-       PrixCaraE : ["" , Validators.required] ,
+       CaratC : ["" , this.isChecked ? Validators.required : null] ,
+       PrixCaraC : ["" , this.isChecked ? Validators.required :null] ,
+       CaratE : ["" , this.isChecked ? Validators.required : null] ,
+       PrixCaraE : ["" , this.isChecked ?  Validators.required : null] ,
        PrixOr : ["" , Validators.required] ,
        valeurDm : ["" , Validators.required] ,
        PrixAchat : ["" , Validators.required] ,
@@ -77,6 +93,15 @@ ref = this.backend.getlastRef()
        
     
      })
+
+
+     this.boutiquesrv.getAll().subscribe((data : []) => {
+
+this.boutique = data
+
+     })
+
+
   }
 
   change(e) {
@@ -106,8 +131,13 @@ ref = this.backend.getlastRef()
 console.log(this.form.value)
 
 if(this.form.valid) {
+let obj = this.form.value
 
-this.backend.addItem(this.form.value)
+obj.ref = this.ref 
+obj.date = new Date()
+this.backend.addItem(obj)
+
+console.log(this.backend.articles)
 
 }
 

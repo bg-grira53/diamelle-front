@@ -49,12 +49,14 @@ this.articles.push(item)
 
   getlastRef() {
 
-   let ref = this.start
+   let ref = this.start 
 
    for (let a of this.articles) {
 
-    ref = a.ref
+    ref = parseInt(a.ref) + 1
    }
+
+   
 return '' + ref 
   }
 
@@ -84,4 +86,77 @@ this.famille.push(item)
     this.famille.splice(index, 1)
   }
 
+
+  Updatecouleur(item , des){
+    var index = this.couleur.map(function(e) { return e.des; }).indexOf(des);
+
+    
+    
+    this.couleur[index] = item;
+
+  }
+
+
+  addcouleur(item) {
+this.couleur.push(item)
+
+  }
+
+
+  deletcouleur(des) {
+    var index = this.couleur.map(function(e) { return e.des; }).indexOf(des);
+
+
+    this.couleur.splice(index, 1)
+  }
+
+
+  Updatetype(item , des){
+    var index = this.type.map(function(e) { return e.des; }).indexOf(des);
+
+    
+    
+    this.type[index] = item;
+
+  }
+
+
+  addtype(item) {
+this.type.push(item)
+
+  }
+
+
+  delettype(des) {
+    var index = this.type.map(function(e) { return e.des; }).indexOf(des);
+
+
+    this.type.splice(index, 1)
+  }
+  
+
+  Updatefr(item , code){
+    var index = this.fourniseur.map(function(e) { return e.code; }).indexOf(code);
+
+    
+    
+    this.fourniseur[index] = item;
+
+  }
+
+
+  addfr(item) {
+this.fourniseur.push(item)
+
+console.log(item)
+
+  }
+
+
+  deletfr(code) {
+    var index = this.fourniseur.map(function(e) { return e.code; }).indexOf(code);
+
+
+    this.fourniseur.splice(index, 1)
+  }
 }
